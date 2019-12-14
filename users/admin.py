@@ -1,8 +1,18 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from . import models
 
-# Register your models here.
-
-@admin.register(models.User)
-class CustomUserAdmin(admin.ModelAdmin):
-    pass
+@admin.register(models.User) # 내가 만든 User와의 연결고리
+class CustomUserAdmin(UserAdmin):
+    fieldsets = UserAdmin.fieldsets + (
+        (
+            "Custom fields",
+            {
+                "fields": (
+                    "avatar",
+                    "gender",
+                    "bio"
+                )
+            }
+        ),
+    )
