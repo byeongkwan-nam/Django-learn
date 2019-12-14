@@ -28,14 +28,14 @@ class User(AbstractUser):
         (LANGUAGE_KR, "KR")
     )
 
-    avatar = models.ImageField(null=True, blank=True)
-    gender = models.CharField(choices=GENDER_CHOICES, max_length=10, null=True, blank=True)
+    avatar = models.ImageField(blank=True)
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
     bio = models.TextField(default='', blank=True)
 
 
-    birthdate = models.DateField(null=True)
-    currency = models.CharField(null=True, blank=True, max_length=3, choices=CURRENCY_CHOICES)
-    language = models.CharField(null=True, blank=True, max_length=2, choices=LANGUAGE_CHOICES)
+    birthdate = models.DateField(null=True, blank=True)
+    currency = models.CharField(blank=True, max_length=3, choices=CURRENCY_CHOICES)
+    language = models.CharField(blank=True, max_length=2, choices=LANGUAGE_CHOICES)
     superhost = models.BooleanField(default=False)
 
 
